@@ -25,7 +25,7 @@ def about():
 @app.route('/next')
 def about():
     try:
-        return render_template('next.html', titel = 'NextPage', line1 = ('this follows next')
+        return render_template('next.html', titel = 'NextPage', line1 = 'this follows next')
     except Exception as e:
         return str(e)
 
