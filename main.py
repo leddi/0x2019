@@ -21,6 +21,14 @@ def about():
     except Exception as e:
         return str(e)
 
+#next page
+@app.route('/next')
+def about():
+    try:
+        return render_template('next.html', titel = 'NextPage', line1 = ('this follows next')
+    except Exception as e:
+        return str(e)
+
 
 if __name__ == "__main__":
     app.run(host='127.0.0.1', debug=True, port=5001, passthrough_errors=True)
