@@ -17,9 +17,9 @@ def main():
 @app.route('/about')
 def about():
     try:
-	return render_template('about.html', titel = 'About me', line1 = 'nothing to say')
+        return render_template('about.html', titel = 'About me', line1 = 'nothing to say')
     except Exception as e:
-	return str(e)
+        return str(e)
 
 
 if __name__ == "__main__":
