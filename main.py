@@ -56,7 +56,7 @@ def quickform():
     form = NameForm()
     if form.validate_on_submit():
         session['name'] = form.name.data
-        return redirect(url_for('quickform'))
+        return redirect(url_for('quickform', _external=True))
     return render_template('quickform.html', form = form, name = session.get('name'))
     
 
