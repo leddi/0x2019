@@ -1,15 +1,17 @@
 import os
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 
 # the all-important app variable:
 app = Flask(__name__)
 
-#main route
+#index route
 @app.route('/')
-def main():
+def index():
+    user_agent = request.headers.get('User-Agent')
     try:
         titel = '0x2019.de'
-        return render_template('index_bootstrap.html', titel = titel, line1 = '+---- 0x2019.de ----+')
+        line1 = '<p>You are using {}</p>'.format(user_agent)
+        return render_template('index_bootstrap.html', titel = titel, line1 = line1)
     except Exception as e:
         return str(e)
 
