@@ -1,8 +1,9 @@
-<html>
-<body bgcolor=CCCCCC style='font-family: mono;'>
-	<center>
-		+----- {{titel}} -----+
-	</center>
-</body>
+{% extends "base.html" %}
 
-</html>
+{% block title %}FlaskApp{% endblock %}
+
+{% block page_content %}
+<div class="page-header">
+    <h1>About page</h1>
+</div>
+{% endblock %}
