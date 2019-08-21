@@ -15,7 +15,7 @@ def index():
     try:
         titel = '0x2019.de'
         line1 = 'You are using {}'.format(user_agent)
-        return render_template('index_bootstrap.html', titel = titel, line1 = line1)
+        return render_template('index.html', titel = titel, line1 = line1)
     except Exception as e:
         return str(e)
 #user pages
