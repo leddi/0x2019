@@ -10,7 +10,7 @@ def index():
     user_agent = request.headers.get('User-Agent')
     try:
         titel = '0x2019.de'
-        line1 = '<p>You are using {}</p>'.format(user_agent)
+        line1 = 'You are using {}'.format(user_agent)
         return render_template('index_bootstrap.html', titel = titel, line1 = line1)
     except Exception as e:
         return str(e)
