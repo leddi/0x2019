@@ -18,6 +18,10 @@ def index():
         return render_template('index_bootstrap.html', titel = titel, line1 = line1)
     except Exception as e:
         return str(e)
+#user pages
+@app.route('/user/<name>')
+def user(name):
+    return render_template('user.html', name = name)
 
 #about page
 @app.route('/about')
