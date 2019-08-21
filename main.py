@@ -1,12 +1,23 @@
 import os
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, session, redirect, url_for
 from flask_bootstrap import Bootstrap
+from flask_wtf import FlaskForm
+from wtforms import StringField, SubmitField
+from wtforms.validators import DataRequired
+
 
 # the all-important app variable:
 app = Flask(__name__)
+app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
 
 #bootstrap
 bootstrap = Bootstrap(app)
+
+#flaskform
+class NameForm(FlaskForm):
+    name = StringField('What is your name?', validators=[DataRequired()])
+    submit = SubmitField('Submit')
+
 
 #index route
 @app.route('/')
@@ -39,6 +50,15 @@ def next():
     except Exception as e:
         return str(e)
 
+#quickform
+@app.route('/quickform', methods = ['GET', 'POST'])
+def quickform():
+    form = NameForm()
+    if form.validate_on_submit():
+        session['name'] = form.name.data
+        return redirect(url_for('quickform'))
+    return render_template('quickform.html', form = form, name = session.get('name'))
+    
 
 if __name__ == "__main__":
     app.run(host='127.0.0.1', debug=True, port=5001, passthrough_errors=True)
