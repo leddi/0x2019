@@ -1,8 +1,12 @@
 import os
 from flask import Flask, render_template, request
+from flask_bootstrap import Bootstrap
 
 # the all-important app variable:
 app = Flask(__name__)
+
+#bootstrap
+bootstrap = Bootstrap(app)
 
 #index route
 @app.route('/')
