@@ -1,9 +1,9 @@
 import os
-from flask import Flask, render_template, request, session, redirect, url_for
+from flask import Flask, render_template, request, session, redirect, url_for, flash
 from flask_bootstrap import Bootstrap
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField
-from wtforms.validators import DataRequired
+from wtforms import StringField, SubmitField, IntegerField
+from wtforms.validators import DataRequired, NumberRange
 
 
 # the all-important app variable:
@@ -16,6 +16,7 @@ bootstrap = Bootstrap(app)
 #flaskform
 class NameForm(FlaskForm):
     name = StringField('What is your name?', validators=[DataRequired()])
+    age  = IntegerField('How old are U?', validators=[DataRequired(), NumberRange(3, 100)])
     submit = SubmitField('Submit')
 
 
@@ -56,8 +57,13 @@ def quickform():
     form = NameForm()
     if form.validate_on_submit():
         session['name'] = form.name.data
-        return redirect(url_for('quickform', _external=True))
-    return render_template('quickform.html', form = form, name = session.get('name'))
+        session['age']  = form.age.data
+        flash('Everything is awesome')
+        return redirect('/quickform')           #url_for('quickform', _external=True))
+    return render_template('quickform.html', \
+                                form = form, \
+                                name = session.get('name'), \
+                                age = session.get('age'))
     
 
 if __name__ == "__main__":
