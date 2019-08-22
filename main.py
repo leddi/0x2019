@@ -58,7 +58,7 @@ def quickform():
     if form.validate_on_submit():
         session['name'] = form.name.data
         session['age']  = form.age.data
-        flash('Everything is awesome')
+        flash('Everything is awesome.')
         return redirect('/quickform')           #url_for('quickform', _external=True))
     return render_template('quickform.html', \
                                 form = form, \
