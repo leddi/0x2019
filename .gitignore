@@ -1,5 +1,6 @@
 venv
 venv/
+hello.py
 __pycache__
 __pycache__/
 sqlite.*
