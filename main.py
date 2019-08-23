@@ -59,7 +59,7 @@ def quickform():
         session['name'] = form.name.data
         session['age']  = form.age.data
         flash('Everything is awesome.')
-        return redirect('/quickform')           #url_for('quickform', _external=True))
+        return redirect(url_for('quickform', _external=True))
     return render_template('quickform.html', \
                                 form = form, \
                                 name = session.get('name'), \
