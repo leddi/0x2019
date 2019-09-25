@@ -1,6 +1,7 @@
 import os
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+from werkzeug.security import generate_password_hash
 
 
 #projects basedir
@@ -31,4 +32,9 @@ class User(db.Model):
 
     def __repr__(self):
         return '<User %r>' % self.username
+
+class Picture(db.Model):
+    __tablename__ = 'picture'
+    id = db.Column(db.Integer, primary_key=True)
+    filehash = db.Column(db.String(16), unique=True, index=True)
 
