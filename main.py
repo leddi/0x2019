@@ -19,6 +19,11 @@ class NameForm(FlaskForm):
     age  = IntegerField('How old are U?', validators=[DataRequired(), NumberRange(3, 100)])
     submit = SubmitField('Submit')
 
+class LoginPage(FlaskForm):
+    username = StringField('Username', validators=[DataRequired()])
+    password = StringField('Password', validators=[DataRequired()])
+    submit = SubmitField('Submit')
+
 
 #index route
 @app.route('/')
@@ -64,7 +69,20 @@ def quickform():
                                 form = form, \
                                 name = session.get('name'), \
                                 age = session.get('age'))
-    
+#loginform
+@app.route('/login', methods = ['GET', 'POST'])
+def loginform():
+    form = LoginPage()
+    if  form.validate_on_submit():
+        user = User.query.filter_by(email=form.email.data).first()
+        if user is not None and user.verify_password(form.password.data):
+            login_user(user, form.remember_me.data)
+            next = request.args.get('next')
+            if next is None or not next.startswith('/'):
+                next = url_for('main.index')
+            return redirect(next)
+        flash('Invalid username or password.')
+    return render_template('auth/login.html', form=form)
 
 if __name__ == "__main__":
     app.run(host='127.0.0.1', debug=True, port=5001, passthrough_errors=True)
