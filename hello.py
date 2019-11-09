@@ -3,7 +3,6 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash
 
-
 #projects basedir
 basedir = os.path.abspath(os.path.dirname(__file__))
 
