@@ -19,7 +19,6 @@ class NameForm(FlaskForm):
     age  = IntegerField('How old are U?', validators=[DataRequired(), NumberRange(3, 100)])
     submit = SubmitField('Submit')
 
-
 #index route
 @app.route('/')
 def index():
