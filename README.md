@@ -1,6 +1,6 @@
 # flask application for 0x2019.de
 
-##
+## docker commands
 
 `$ docker build -t python_flask_app .`
 
