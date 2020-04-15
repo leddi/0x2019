@@ -1,6 +1,6 @@
 .vscode/
-0x2019_venv
-0x2019_venv/
+0x2019-venv
+0x2019-venv/
 .vscode
 __pycache__
 __pycache__/
