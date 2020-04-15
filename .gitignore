@@ -1,6 +1,7 @@
 .vscode/
-venv
-venv/
+0x2019_venv
+0x2019_venv/
+.vscode
 __pycache__
 __pycache__/
 sqlite.*
