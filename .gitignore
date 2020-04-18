@@ -7,3 +7,4 @@ __pycache__/
 sqlite.*
 sqlite.db*
 *.sh
+static/user_images
